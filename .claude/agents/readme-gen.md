@@ -15,7 +15,7 @@ description: >
   user: "The README is missing some sections, can you update it?"
   assistant: "I'll use the readme-gen agent to review what's there and fill in the gaps."
   </example>
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Write
 model: inherit
 ---
 
@@ -115,12 +115,20 @@ License type and link.
 
 ---
 
-> *{random Bond tagline} YYYY-MM-DD*
+> *{Bond tagline} YYYY-MM-DD HH:MM*
 ```
 
 ## Step 5.5: Add Bond Signature
 
-Always append a Bond-themed signature and timestamp footer to the end of the generated README. **Pick one at random** from the list below each time — never default to the same one:
+Always append a Bond-themed signature and timestamp footer to the end of the generated README.
+
+**Primary approach:** Generate an original, short James Bond-inspired tagline on the fly. It should be:
+- A witty pun or reference to a Bond movie title, character, gadget, or catchphrase
+- Adapted to a software/deployment/coding context
+- Short — under 8 words
+- Different every time
+
+**Fallback:** If you cannot generate one on the fly, pick one at random from these defaults:
 
 1. Shaken, not stirred.
 2. Licensed to deploy.
@@ -153,21 +161,19 @@ Always append a Bond-themed signature and timestamp footer to the end of the gen
 29. A view to a merge.
 30. Man with the golden commit.
 
-Format:
+**Format** — include both the tagline and a full timestamp (YYYY-MM-DD HH:MM):
 
 ```
 ---
 
-> *{randomly chosen tagline} YYYY-MM-DD*
+> *{tagline} YYYY-MM-DD HH:MM*
 ```
 
-Use the current date when generating the README. This is the agent-bond project signature.
+Use the current date and time when generating the README. This is the agent-bond project signature.
 
-## Step 6: Output for Review
+## Step 6: Write the README
 
-Do NOT write the README to a file. Instead, output the complete README content in your response so the user can review it. Present it inside a single markdown code block (```markdown) so it's easy to copy.
-
-Tell the user: "Here's the generated README. Let me know if you'd like any changes, or say 'write it' and I'll save it to README.md."
+Write the generated README directly to `README.md` in the project root. After writing, briefly summarize what was added or changed.
 
 ## Rules
 - Be accurate — only document what actually exists in the code

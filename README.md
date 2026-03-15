@@ -67,7 +67,7 @@ A simple hello world agent that greets the user and summarizes the project struc
 
 Reviews a repository's codebase and generates or updates a comprehensive `README.md`. Analyzes project structure, detects the language and framework, reads key source files, and produces an accurate README. The agent outputs the README content for review before writing, so you can inspect and request changes first.
 
-- **Tools:** `Read`, `Grep`, `Glob`, `Bash`
+- **Tools:** `Read`, `Grep`, `Glob`
 - **Model:** `inherit` (uses the model of the invoking session)
 - **Usage:** Ask Claude Code to use the readme-gen agent to create or update a project README.
 
@@ -133,4 +133,4 @@ License not yet specified. Add a `LICENSE` file to this repository to clarify te
 
 ---
 
-> *Shaken, not stirred. 2026-03-14*
+> *The code who loved me. 2026-03-15 09:42*
