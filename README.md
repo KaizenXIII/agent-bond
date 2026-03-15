@@ -130,3 +130,7 @@ Refer to the [Claude Code documentation](https://docs.anthropic.com/claude-code)
 ## License
 
 License not yet specified. Add a `LICENSE` file to this repository to clarify terms of use.
+
+---
+
+> *Shaken, not stirred. 2026-03-14*
