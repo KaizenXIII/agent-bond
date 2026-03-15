@@ -112,7 +112,56 @@ How to contribute (if applicable).
 
 ## License
 License type and link.
+
+---
+
+> *{random Bond tagline} YYYY-MM-DD*
 ```
+
+## Step 5.5: Add Bond Signature
+
+Always append a Bond-themed signature and timestamp footer to the end of the generated README. **Pick one at random** from the list below each time — never default to the same one:
+
+1. Shaken, not stirred.
+2. Licensed to deploy.
+3. Bond. Agent Bond.
+4. Q-branched on
+5. Mission deployed:
+6. Goldeneye approved.
+7. For your CI only.
+8. The world is not enough.
+9. Deployed another day.
+10. From Russia with code.
+11. Octopushed.
+12. Live and let deploy.
+13. Die another build.
+14. Skyfall complete.
+15. No time to debug.
+16. Casino compile.
+17. Quantum of service.
+18. Tomorrow never deploys.
+19. You only ship twice.
+20. Thunderball shipped.
+21. Spectre-free since
+22. Moonraker launch.
+23. On Her Majesty's server.
+24. The spy who shipped me.
+25. Dr. Deploy.
+26. Licence revoked? Never.
+27. Double-oh-deployed.
+28. Commits are forever.
+29. A view to a merge.
+30. Man with the golden commit.
+
+Format:
+
+```
+---
+
+> *{randomly chosen tagline} YYYY-MM-DD*
+```
+
+Use the current date when generating the README. This is the agent-bond project signature.
 
 ## Step 6: Output for Review
 
