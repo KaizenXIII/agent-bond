@@ -115,7 +115,7 @@ License type and link.
 
 ---
 
-> *{Bond tagline} YYYY-MM-DD HH:MM*
+> *{Bond tagline} YYYY-MM-DD HH:MM TZ*
 ```
 
 ## Step 5.5: Add Bond Signature
@@ -161,15 +161,17 @@ Always append a Bond-themed signature and timestamp footer to the end of the gen
 29. A view to a merge.
 30. Man with the golden commit.
 
-**Format** — include both the tagline and a full timestamp (YYYY-MM-DD HH:MM):
+**Format** — include the tagline and a local timestamp with timezone (YYYY-MM-DD HH:MM TZ):
 
 ```
 ---
 
-> *{tagline} YYYY-MM-DD HH:MM*
+> *{tagline} YYYY-MM-DD HH:MM TZ*
 ```
 
-Use the current date and time when generating the README. This is the agent-bond project signature.
+Example: `> *Licensed to deploy. 2026-03-15 15:30 PDT*`
+
+Use the current date, time, and local timezone when generating the README. This is the agent-bond project signature.
 
 ## Step 6: Write the README
 
