@@ -1,81 +1,59 @@
 # 00-agents
 
-A collection of reusable Claude Code sub-agents for common development tasks.
+A collection of Bond-themed [Claude Code](https://docs.anthropic.com/claude-code) sub-agents. Drop them into any project and invoke them by name to get specialized help -- a field operative, a quartermaster, and a right hand who writes your READMEs.
 
-## Overview
-
-`00-agents` is a repository of Claude Code agent definitions stored under `.claude/agents/`. These agents extend Claude Code with specialized, scoped behaviors that can be invoked on demand. Each agent is defined as a Markdown file with a YAML front matter header that declares its name, description, available tools, and optionally a preferred model.
+Claude Code discovers agent definitions automatically from `.claude/agents/`. This repo gives you a ready-made set you can copy into any project or install globally.
 
 ## Table of Contents
 
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
+- [Quick Start](#quick-start)
 - [Agents](#agents)
+- [Installation](#installation)
 - [Project Structure](#project-structure)
 - [Adding New Agents](#adding-new-agents)
 - [Contributing](#contributing)
-- [License](#license)
 
-## Features
-
-- Drop-in agent definitions compatible with Claude Code's sub-agent system
-- Each agent is self-contained with its own tool permissions and instructions
-- Agents can be invoked by name during any Claude Code session
-- Works at both project level (`.claude/agents/`) and user level (`~/.claude/agents/`)
-
-## Prerequisites
-
-- [Claude Code](https://claude.ai/code) CLI installed and authenticated
-
-## Installation
-
-Clone the repository and copy the agent definitions into your project or home directory:
+## Quick Start
 
 ```bash
+# Clone the repo
 git clone https://github.com/KaizenXIII/00-agents.git
-```
 
-**Project-level** (agents available in one project):
-
-```bash
+# Copy agents into your project
 cp -r 00-agents/.claude/agents/ /path/to/your/project/.claude/agents/
+
+# Start Claude Code and invoke an agent
+# "bond, refactor this module"
+# "hey moneypenny, what's this project about?"
+# "q, analyze this build failure"
 ```
-
-**User-level** (agents available in all projects):
-
-```bash
-cp -r 00-agents/.claude/agents/ ~/.claude/agents/
-```
-
-Claude Code automatically discovers agent definitions in both locations.
 
 ## Agents
 
-### `bond`
+### Bond
 
 007 -- the field operative. A general-purpose agent for executing missions. Confident, concise, and resourceful -- Bond gets straight to the point and adapts to whatever task is at hand.
 
-- **Tools:** `Read`, `Grep`, `Glob`, `Write`, `Edit`, `Bash`
-- **Model:** `inherit`
-- **Aliases:** `james`, `007`
+- **Tools:** Read, Grep, Glob, Write, Edit, Bash
+- **Model:** inherits from session
+- **Invoke with:** `bond`, `james`, `007`
 
 ```
 "bond, take care of this"
 "007, refactor this module"
 ```
 
-### `moneypenny`
+### Moneypenny
 
-Bond's right hand at MI6. A dual-purpose agent that operates in two modes:
+Bond's right hand at MI6. Operates in two modes:
 
-**Mode 1 -- Greeter (default):** Scans the project structure and greets you with a brief summary of what it found. Useful for getting oriented in an unfamiliar codebase.
+**Greeter** -- scans the project structure and gives you a brief summary of what it found. Useful for getting oriented in an unfamiliar codebase.
 
-**Mode 2 -- README Generator:** Analyzes the full codebase -- project structure, language/framework, key source files, CI config -- and generates or updates a comprehensive `README.md`. Includes a Bond-themed signature with timestamp.
+**README Generator** -- analyzes the full codebase (structure, language/framework, source files, CI config) and generates or updates a comprehensive `README.md` with a Bond-themed signature.
 
-- **Tools:** `Read`, `Grep`, `Glob`, `Write`
-- **Model:** session default (no override)
-- **Aliases:** `money-penny`, `money`, `penny`, `mp`
+- **Tools:** Read, Grep, Glob, Write
+- **Model:** session default
+- **Invoke with:** `moneypenny`, `money-penny`, `money`, `penny`, `mp`
 
 ```
 "hey moneypenny, what's this project about?"
@@ -83,47 +61,63 @@ Bond's right hand at MI6. A dual-purpose agent that operates in two modes:
 "The README is missing some sections, can you update it?"
 ```
 
-### `q`
+### Q
 
 The quartermaster -- MI6's tech wizard. An agent for analysis, tooling, and clever solutions. Precise and technical with a slightly dry wit, Q explains reasoning when it matters and always delivers something useful.
 
-- **Tools:** `Read`, `Grep`, `Glob`, `Write`, `Edit`, `Bash`
-- **Model:** `inherit`
-- **Aliases:** `quartermaster`
+- **Tools:** Read, Grep, Glob, Write, Edit, Bash
+- **Model:** inherits from session
+- **Invoke with:** `q`, `quartermaster`
 
 ```
 "q, take a look at this"
 "quartermaster, what's going on with this build?"
 ```
 
+## Installation
+
+**Project-level** -- agents available in a single project:
+
+```bash
+cp -r 00-agents/.claude/agents/ /path/to/your/project/.claude/agents/
+```
+
+**User-level** -- agents available across all your projects:
+
+```bash
+cp -r 00-agents/.claude/agents/ ~/.claude/agents/
+```
+
+Claude Code automatically discovers agents in both locations. No configuration required.
+
 ## Project Structure
 
 ```
 .claude/
   agents/
-    bond.md         # General-purpose field operative agent
-    moneypenny.md   # Greeter + README generation agent
-    q.md            # Analysis and tooling agent
-CLAUDE.md           # Project-level Claude Code config
+    bond.md           # Field operative -- general-purpose agent
+    moneypenny.md     # Greeter + README generator
+    q.md              # Analysis and tooling agent
+CLAUDE.md             # Project-level Claude Code config
 README.md
 ```
 
 ## Adding New Agents
 
-Create a new Markdown file under `.claude/agents/` with a YAML front matter header followed by the agent's instructions:
+Create a Markdown file under `.claude/agents/` with YAML front matter:
 
 ```markdown
 ---
 name: my-agent
-description: Brief description of what this agent does and when to use it.
+description: Brief description of what this agent does.
 tools: Read, Grep, Bash
-model: inherit          # optional; omit to use the session default
+model: inherit
 ---
 
 Your agent instructions go here.
 ```
 
-The `description` field supports multi-line YAML and can include `<example>` blocks to help Claude Code decide when to invoke the agent automatically:
+The `description` field supports multi-line YAML and `<example>` blocks that help Claude Code decide when to invoke the agent automatically:
 
 ```markdown
 ---
@@ -140,19 +134,15 @@ tools: Read, Bash
 ---
 ```
 
-Refer to the [Claude Code documentation](https://docs.anthropic.com/claude-code) for the full list of supported tools and model options.
+See the [Claude Code documentation](https://docs.anthropic.com/claude-code) for the full list of supported tools and model options.
 
 ## Contributing
 
 1. Fork the repository
-2. Create a branch for your new agent (`git checkout -b add-my-agent`)
+2. Create a branch for your agent (`git checkout -b add-my-agent`)
 3. Add your agent definition under `.claude/agents/`
-4. Open a pull request with a description of what the agent does and when it should be used
-
-## License
-
-License not yet specified. Add a `LICENSE` file to this repository to clarify terms of use.
+4. Open a pull request describing what the agent does and when it should be used
 
 ---
 
-> *A view to a merge. 2026-03-15 13:58 PDT*
+> *Commits are forever. 2026-03-15 14:02 PDT*
