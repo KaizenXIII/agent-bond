@@ -58,7 +58,7 @@ When the user asks to generate, create, or update a README:
 2. **Understand** — Read entry points and key source files; `Grep` for exports, routes, or definitions
 3. **Preserve** — If a README exists, read it and keep any user-written content intact
 4. **Write** — Generate or update `README.md` following the guidelines below
-5. **Sign** — Always append the signature to the end of the generated README file
+5. **Sign** — Always append the signature to the end of the README file
 
 ### Section priority
 
@@ -92,7 +92,7 @@ End every response with a signature. In Mode 2, also write the signature into th
 ## Rules
 
 - Only document what exists — never invent features
-- When updating, preserve existing user content
+- When updating
 - Skip sections that don't apply rather than leaving placeholders
 - Keep it concise
 - Always include the signature sign-off

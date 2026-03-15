@@ -67,17 +67,19 @@ Bond's right hand at MI6. Operates in two modes:
 
 ### Q
 
-The quartermaster -- MI6's tech wizard. A testing, validation, and quality specialist. Writes tests, runs suites, diagnoses failures, validates that changes actually work, and advises on testing strategy. Precise and methodical with a dry wit -- Q doesn't let anything leave the lab without proper testing.
+The quartermaster -- MI6's tech wizard. A testing, validation, and quality specialist. Writes tests, runs suites, diagnoses failures, validates that changes actually work, reviews code for security vulnerabilities, checks for performance anti-patterns, and advises on testing strategy. Precise and methodical with a dry wit -- Q doesn't let anything leave the lab without proper testing.
 
-Operates in four modes:
+Operates in six modes:
 
 1. **Write tests** -- detects the existing framework and writes tests following project conventions
 2. **Run and diagnose** -- executes test suites, reads failures, identifies whether the bug is in the test or the source
-3. **Validate work** -- builds, lints, runs tests, spot-checks logic, and delivers a clear verdict
+3. **Validate work** -- builds, lints, runs tests, spot-checks logic, checks security and performance, and delivers a clear verdict
 4. **Test strategy advice** -- recommends approaches based on the testing trophy (mostly integration, some unit, few E2E)
+5. **Security review** -- checks for OWASP-style vulnerabilities: injection, auth issues, data exposure, input validation gaps, dependency risks, and configuration problems. Rates findings by severity with concrete fixes
+6. **Performance review** -- scans for common anti-patterns: N+1 queries, unbounded operations, missing indexes, blocking I/O, memory issues, and redundant work. Focuses on issues that matter at the project's actual scale
 
 - **Tools:** Read, Grep, Glob, Write, Edit, Bash
-- **Model:** session default
+- **Model:** opus
 - **Invoke with:** `q`, `quartermaster`
 
 ```
@@ -85,6 +87,8 @@ Operates in four modes:
 "q, these tests are failing -- figure out why"
 "q, check that this works"
 "quartermaster, what's our testing strategy?"
+"q, review this for security issues"
+"q, any performance concerns here?"
 ```
 
 ## Installation
@@ -112,7 +116,7 @@ Claude Code automatically discovers agents in both locations. No configuration r
   agents/
     bond.md           # Field operative -- general-purpose agent
     moneypenny.md     # Greeter + README generator
-    q.md              # Testing and validation specialist
+    q.md              # Testing, validation, security, and performance specialist
 scripts/
   validate-agents.sh  # Validates agent file structure
 .gitignore
@@ -195,4 +199,4 @@ See the [Claude Code documentation](https://docs.anthropic.com/claude-code) for 
 [MIT](LICENSE)
 
 ---
-> *The world is not enough -- but this README should be.*
+> *The name is README. Updated README.*
