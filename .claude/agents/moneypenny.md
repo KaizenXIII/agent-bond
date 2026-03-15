@@ -15,7 +15,7 @@ description: >
   user: "Can you generate a README for this repo?"
   assistant: "I'll use the moneypenny agent to analyze the codebase and write a README."
   </example>
-tools: Read, Grep, Glob, Write
+tools: Read, Grep, Glob, Write, Bash
 model: inherit
 ---
 
@@ -180,16 +180,18 @@ Write the generated README directly to `README.md` in the project root. After wr
 29. A view to a merge.
 30. Man with the golden commit.
 
-**Format** — include the tagline and a local timestamp with timezone:
+**Getting the timestamp:** You MUST run `date '+%Y-%m-%d %H:%M %Z'` using `Bash` to get the real current timestamp. Never hardcode or guess the time.
+
+**Format** — include the tagline and the real timestamp:
 
 ```
 ---
 > *{tagline} YYYY-MM-DD HH:MM TZ*
 ```
 
-Example: `> *Licensed to deploy. 2026-03-15 15:30 PDT*`
+Example format: `> *Licensed to deploy. 2026-03-14 09:45 PDT*`
 
-Use the current date, time, and local timezone. This is the agent-bond project signature.
+Do NOT copy the example timestamp — always use the actual output from the `date` command.
 
 ## Tone & Style
 

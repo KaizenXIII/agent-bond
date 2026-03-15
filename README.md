@@ -23,7 +23,6 @@ A collection of reusable Claude Code sub-agents for common development tasks.
 - Each agent is self-contained with its own tool permissions and instructions
 - Agents can be invoked by name during any Claude Code session
 - Works at both project level (`.claude/agents/`) and user level (`~/.claude/agents/`)
-- Git pre-push hook auto-syncs agents to `~/.claude/agents/` so they stay available globally
 
 ## Prerequisites
 
@@ -51,34 +50,50 @@ cp -r agent-bond/.claude/agents/ ~/.claude/agents/
 
 Claude Code automatically discovers agent definitions in both locations.
 
-### Auto-sync with pre-push hook
-
-This repo includes a Git pre-push hook that copies agent definitions to `~/.claude/agents/` before every push. If you develop agents in this repo, they stay in sync globally without manual copying. The hook is located at `.git/hooks/pre-push`.
-
 ## Agents
 
-### `greeter`
+### `bond`
 
-A simple hello world agent that greets the user and summarizes the project structure. Useful for verifying that the sub-agent system is working correctly.
+007 -- the field operative. A general-purpose agent for executing missions. Confident, concise, and resourceful -- Bond gets straight to the point and adapts to whatever task is at hand.
 
-- **Tools:** `Read`, `Glob`
-- **Usage:** Ask Claude Code to invoke the greeter agent to confirm agents are loading properly.
+- **Tools:** `Read`, `Grep`, `Glob`, `Write`, `Edit`, `Bash`
+- **Model:** `inherit`
+- **Aliases:** `james`, `007`
 
 ```
-"Use the greeter agent to check the project."
+"bond, take care of this"
+"007, refactor this module"
 ```
 
-### `readme-gen`
+### `moneypenny`
 
-Reviews a repository's codebase and generates or updates a comprehensive `README.md`. Analyzes project structure, detects the language and framework, reads key source files, and writes the README directly. Includes a Bond-themed signature with timestamp.
+Bond's right hand at MI6. A dual-purpose agent that operates in two modes:
+
+**Mode 1 -- Greeter (default):** Scans the project structure and greets you with a brief summary of what it found. Useful for getting oriented in an unfamiliar codebase.
+
+**Mode 2 -- README Generator:** Analyzes the full codebase -- project structure, language/framework, key source files, CI config -- and generates or updates a comprehensive `README.md`. Includes a Bond-themed signature with timestamp.
 
 - **Tools:** `Read`, `Grep`, `Glob`, `Write`
-- **Model:** `inherit` (uses the model of the invoking session)
-- **Usage:** Ask Claude Code to use the readme-gen agent to create or update a project README.
+- **Model:** `inherit`
+- **Aliases:** `money-penny`, `money`, `penny`, `mp`
 
 ```
+"hey moneypenny, what's this project about?"
 "Can you generate a README for this repo?"
 "The README is missing some sections, can you update it?"
+```
+
+### `q`
+
+The quartermaster -- MI6's tech wizard. An agent for analysis, tooling, and clever solutions. Precise and technical with a slightly dry wit, Q explains reasoning when it matters and always delivers something useful.
+
+- **Tools:** `Read`, `Grep`, `Glob`, `Write`, `Edit`, `Bash`
+- **Model:** `inherit`
+- **Aliases:** `quartermaster`
+
+```
+"q, take a look at this"
+"quartermaster, what's going on with this build?"
 ```
 
 ## Project Structure
@@ -86,11 +101,10 @@ Reviews a repository's codebase and generates or updates a comprehensive `README
 ```
 .claude/
   agents/
-    greeter.md      # Hello world / smoke-test agent
-    readme-gen.md   # README generation agent
-.git/
-  hooks/
-    pre-push        # Auto-syncs agents to ~/.claude/agents/
+    bond.md         # General-purpose field operative agent
+    moneypenny.md   # Greeter + README generation agent
+    q.md            # Analysis and tooling agent
+CLAUDE.md           # Project-level Claude Code config
 README.md
 ```
 
@@ -141,4 +155,4 @@ License not yet specified. Add a `LICENSE` file to this repository to clarify te
 
 ---
 
-> *The name's README. Gold-fingered README. 2026-03-15 15:10*
+> *Three agents, no time to debug. 2026-03-15 13:41 PDT*
