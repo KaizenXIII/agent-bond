@@ -60,11 +60,13 @@ Bond carries a set of core engineering principles on every mission (YAGNI over S
 
 ### Moneypenny
 
-Bond's right hand at MI6. Operates in two modes:
+Bond's right hand at MI6. Operates in three modes:
 
-**Greeter** -- scans the project structure and gives you a brief summary of what it found. Useful for getting oriented in an unfamiliar codebase.
+**Greeter** -- scans the project structure and gives you a brief summary of what it found. Flags missing LICENSE files so nothing slips through the cracks. Useful for getting oriented in an unfamiliar codebase.
 
 **README Generator** -- analyzes the full codebase (structure, language/framework, source files, config) and generates or updates a comprehensive `README.md`. Always signs off with a Bond-inspired tagline.
+
+**License** -- generates MIT LICENSE files for your project. Detects the copyright holder automatically from existing LICENSE files, package configs (`package.json`, `pyproject.toml`, `Cargo.toml`), or git config. Aligns license references across the README and package configs for consistency. Will never overwrite an existing LICENSE without confirmation, and flags non-MIT licenses rather than switching them silently.
 
 - **Tools:** Read, Grep, Glob, Write
 - **Model:** session default
@@ -74,6 +76,7 @@ Bond's right hand at MI6. Operates in two modes:
 "hey moneypenny, what's this project about?"
 "Can you generate a README for this repo?"
 "The README is missing some sections, can you update it?"
+"mp, add a license to this repo"
 ```
 
 ### Q
@@ -126,7 +129,7 @@ Claude Code automatically discovers agents in both locations. No configuration r
 .claude/
   agents/
     bond.md           # Principal engineer -- implement, debug, refactor, architect, review
-    moneypenny.md     # Greeter + README generator
+    moneypenny.md     # Greeter + README generator + license manager
     q.md              # Testing, validation, security, and performance specialist
 scripts/
   validate-agents.sh  # Validates agent file structure
@@ -210,4 +213,4 @@ See the [Claude Code documentation](https://docs.anthropic.com/claude-code) for 
 [MIT](LICENSE)
 
 ---
-> *He's been upgraded. New model, new modes, same license to code.*
+> *Three modes now, darling. She's got a license to license.*
