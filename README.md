@@ -1,6 +1,6 @@
 # 00-agents
 
-A collection of Bond-themed [Claude Code](https://docs.anthropic.com/claude-code) sub-agents. Drop them into any project and invoke them by name to get specialized help -- a field operative, a quartermaster, and a right hand who writes your READMEs.
+A collection of Bond-themed [Claude Code](https://docs.anthropic.com/claude-code) sub-agents. Drop them into any project and invoke them by name to get specialized help -- a principal engineer, a quartermaster, and a right hand who writes your READMEs.
 
 Claude Code discovers agent definitions automatically from `.claude/agents/`. This repo gives you a ready-made set you can copy into any project or install globally. No build system, no runtime dependencies -- just Markdown files with YAML front matter.
 
@@ -25,7 +25,7 @@ mkdir -p /path/to/your/project/.claude/agents
 cp -r 00-agents/.claude/agents/ /path/to/your/project/.claude/agents/
 
 # Start Claude Code and invoke an agent
-# "bond, refactor this module"
+# "bond, build out the authentication module"
 # "hey moneypenny, what's this project about?"
 # "q, analyze this build failure"
 ```
@@ -34,17 +34,28 @@ cp -r 00-agents/.claude/agents/ /path/to/your/project/.claude/agents/
 
 ### Bond
 
-007 -- the field operative. A general-purpose agent for executing missions. Confident, concise, and resourceful -- Bond gets straight to the point and adapts to whatever task is at hand.
+007 -- MI6's principal engineer. The best field operative in the business: implements, debugs, refactors, architects, and reviews code at the highest level. Bond reads the terrain, plans the approach, and executes with precision -- preferring to work with what's already there rather than reinvent it, making the smallest move that gets the job done.
 
-> **Note:** Bond's operational handbook is still being written. He runs on instinct and good taste for now.
+Operates in five modes:
+
+1. **Implement** -- reads related code, states the approach, writes the code following existing patterns, and verifies with tests
+2. **Debug** -- reproduces the failure, traces from symptom to root cause, applies the minimal fix, and confirms no regressions
+3. **Refactor** -- understands the behavior contract, proposes structural changes, executes without changing behavior, and verifies tests still pass
+4. **Architect** -- clarifies requirements and constraints, surveys the existing codebase, designs with explicit trade-offs, and documents decisions
+5. **Code review** -- reads the full change, assesses correctness, design, maintainability, and simplicity, then reports findings by severity
+
+Bond carries a set of core engineering principles on every mission (YAGNI over SOLID, separation of concerns, fail fast, composition over inheritance, and more) and brings domain expertise across backend/infrastructure (primary), systems (secondary), and frontend (tertiary).
 
 - **Tools:** Read, Grep, Glob, Write, Edit, Bash
-- **Model:** session default
+- **Model:** opus
 - **Invoke with:** `bond`, `james`, `007`
 
 ```
-"bond, take care of this"
-"007, refactor this module"
+"bond, build out the authentication module"
+"bond, this endpoint is returning 500s -- find the problem"
+"007, review this PR"
+"james, refactor this module"
+"bond, what's the right architecture for this service?"
 ```
 
 ### Moneypenny
@@ -114,7 +125,7 @@ Claude Code automatically discovers agents in both locations. No configuration r
 ```
 .claude/
   agents/
-    bond.md           # Field operative -- general-purpose agent
+    bond.md           # Principal engineer -- implement, debug, refactor, architect, review
     moneypenny.md     # Greeter + README generator
     q.md              # Testing, validation, security, and performance specialist
 scripts/
@@ -199,4 +210,4 @@ See the [Claude Code documentation](https://docs.anthropic.com/claude-code) for 
 [MIT](LICENSE)
 
 ---
-> *The name is README. Updated README.*
+> *He's been upgraded. New model, new modes, same license to code.*
