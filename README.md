@@ -60,7 +60,7 @@ Bond carries a set of core engineering principles on every mission (YAGNI over S
 
 ### Moneypenny
 
-Bond's right hand at MI6. Operates in three modes:
+Bond's right hand at MI6. Operates in four modes:
 
 **Greeter** -- scans the project structure and gives you a brief summary of what it found. Flags missing LICENSE files so nothing slips through the cracks. Useful for getting oriented in an unfamiliar codebase.
 
@@ -68,7 +68,9 @@ Bond's right hand at MI6. Operates in three modes:
 
 **License** -- generates MIT LICENSE files for your project. Detects the copyright holder automatically from existing LICENSE files, package configs (`package.json`, `pyproject.toml`, `Cargo.toml`), or git config. Aligns license references across the README and package configs for consistency. Will never overwrite an existing LICENSE without confirmation, and flags non-MIT licenses rather than switching them silently.
 
-- **Tools:** Read, Grep, Glob, Write
+**Financial Analyst** -- analyzes financial data, runs cost breakdowns, builds projections, and generates reports. Handles CSV/JSON/spreadsheet data, cloud billing exports, budget-vs-actuals comparisons, and unit economics (CAC, LTV, burn rate, runway). Shows its math, states assumptions explicitly, and never fabricates numbers.
+
+- **Tools:** Read, Grep, Glob, Write, Edit, Bash
 - **Model:** session default
 - **Invoke with:** `moneypenny`, `money-penny`, `money`, `penny`, `mp`
 
@@ -77,6 +79,8 @@ Bond's right hand at MI6. Operates in three modes:
 "Can you generate a README for this repo?"
 "The README is missing some sections, can you update it?"
 "mp, add a license to this repo"
+"moneypenny, analyze the costs in this spreadsheet"
+"penny, build a revenue projection from this data"
 ```
 
 ### Q
@@ -129,7 +133,7 @@ Claude Code automatically discovers agents in both locations. No configuration r
 .claude/
   agents/
     bond.md           # Principal engineer -- implement, debug, refactor, architect, review
-    moneypenny.md     # Greeter + README generator + license manager
+    moneypenny.md     # Greeter + README generator + license manager + financial analyst
     q.md              # Testing, validation, security, and performance specialist
 scripts/
   validate-agents.sh  # Validates agent file structure
